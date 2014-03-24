@@ -119,7 +119,7 @@
               // Require.js configuration file that is also loaded when in development mode
               "dev-js": { "data-main": "js/app/config/config.js", "src": "js/libs/require.js" },
               // JavaScript initialization file that is loaded when in development mode
-              "dev-init": "js/app/init/DesktopInit.js",
+              "dev-init": "js/app/init/intro.js",
               // JavaScript file that is loaded when in production mode
               "prod-js": "js/app/init/DesktopInit.min.js"
             };
@@ -131,86 +131,127 @@
               require([filesToLoad["dev-init"]]);
             }
           });
+          //custom css for intro
+          boilerplateMVC.loadCSS('css/intro.css');
 
       })(navigator.userAgent || navigator.vendor || window.opera, window, document);
 
   </script>
 
+  <script type="text/template" id='intro_2_template'>
+      <h3>Howdy, <span id='email'>example@e.om</span></h3>
+      <div id='surver_detail'>
+      <div class="form-group">
+          <label for="age" class=''>Age</label>
+          <input type='text' id="age" class='form-control'>
+      </div>
+      <div class="form-group">
+          <label for="nationality" class=''>Nationality</label>
+          <input type='text' id="nationality" class='form-control'>
+      </div>
+      <div class="form-group">
+          <label for="degree" class=''>Targeting Degree</label>
+          <input type='text' id="degree" class='form-control'>
+      </div>
+      <div class="form-group">
+          <label for="region">Region of interest</label>
+          <input type='text' id="region" class='form-control' placeholder='West Coast, New York, etc.'>
+      </div>
+      <div class="form-group">
+          <label for="interest">Which part of the application process would you like to receive guidance on?</label>
+          <input type='text' id="interest" class='form-control' placeholder='Personal Essay, Interview, School listing etc'>
+      </div>
+      <a id='next' class="btn btn-orange btn-primary" role="button">Submit</a>
+  </script>
+  <script type='text/template' id='intro_last'>
+                    <p>Thank you, we will contact you when we have something</p>
+  </script>
+
 </head>
 <body>
+<nav class="navbar navbar-default navbar-nobottom" role="navigation">
+<div class="container">
+    <div class='navbar-header'>
+        <a class='navbar-brand'>Fellow 3</a>
+    </div>
+    <div class='navbar-right'>
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </div>
+</div>
+</nav>
 
   <div data-role="page">
 <!-- 
     <header data-role="header" class="navbar nav navbar-inner">
       <h1>Backbone-Require-Boilerplate (BRB)</h1>
     </header> /header -->
-<div class="container-fluid">
-    <div class="page-header row">
-        <div class='col-md-5'>
-            <h1>Fellow 3</h1>
-        </div>
-        <div class='col-md-4 col-md-push-4'>
-            <ul class="nav nav-pills">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">What</a></li>
-            </ul>
-        </div>
-    </div>
 
-</div>
 <!--
     <div class="container-fluid" data-role="content">
 -->
   
-      <div class="bigscreen jumbotron">
-          <div class='container'>
- 
-          <div class="example"></div>
-          <div class='row'>
-              <div class="col-lg-6">
-                  <h2>Fellow 3 <br/>
+      <div class="bigscreen jumbotron" id="intro_jumbotron">
+          <div class='container row inverse'>
+              <div class="intro-centered col-lg-6">
+                  <h2>Fellow 3<br/>
                       <small>Fuel your college application</small></h2>
-                  (left)</div>
-              <div class="col-lg-6">
-                  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
-                  (right)</div>
-          </div>
+              </div>
+              <div class="col-lg-6 intro-centered" style='' id='survey_app'>
+                  <div class='col-lg-8'>
+                      <input class='form-control input-lg' name='email' type='email' placeholder='Your Email'>
+                  </div>
+                  <a id='next' class="btn btn-orange btn-primary btn-lg" role="button">Get Invited</a>
+              </div>
+              </div>
       </div>
       
       </div>
       <div class='container-fluid'>
+          <section>
       <div class="row">
       
           <div class="col-md-4">
+              <div class='simple-bullet'>
               <h3>
                   Follow Everyone
               </h3>
               Follow your dream school's social network, uncensored.
           </div>
-          <div class="col-md-4">
+          </div>
+          <div class="col-md-4 simpleBullet">
+              <div class='simple-bullet'>
               <h3>
                   College Counseling by peers
               </h3>
               The most up-to-date tips by recent college students
           </div>
+          </div>
           <div class="col-md-4">
+              <div class='simple-bullet'>
               <h3>
                   Interview/speaking English training
               </h3>
               Talk about the interest you shared and get better with interviews
           </div>
+          </div>
 
       </div>
+  </section>
     </div>
+
+    <script type="text/javascript">
+    </script>
 
 <!-- 
     </div>
     -->
-<!-- 
-    <footer class="footer navbar navbar-fixed-bottom" data-role="footer">
-        <p>Written by <a href="https://github.com/gfranko" target="_blank">Greg Franko</a></p>
-    </footer>/footer -->
+
+    <footer class="footer navbar-inverse" data-role="footer">
+        <p>Copyright 2014 Fellow3</p>
+    </footer><!-- /footer -->
 
   </div> <!-- /page -->
 

@@ -1,0 +1,47 @@
+.simple-bullet {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.simpel-bullet h3{
+    text-align: center;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    height: 40px;
+    padding-top: 10px;
+
+}
+
+.navbar-nobottom {
+    margin-bottom: 0;
+}
+
+.nav li a {
+    padding:15px;
+}
+
+#intro_jumbotron {
+    background: url("/img/graduation-banner.jpg") no-repeat; 
+    background-size:cover;
+}
+
+.btn-orange {
+    background-color: gold;
+    border-color: chocolate;
+    color: black;
+}
+
+.inverse {
+    color: white;
+}
+
+#survey_app {
+    height: 450px;
+}
+
+.intro-centered {
+    top: 200px;
+}
