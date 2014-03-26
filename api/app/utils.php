@@ -2,12 +2,16 @@
 
 function getDB() {
     // Create (connect to) SQLite database in file
-     $db = new PDO('sqlite:fellow_alpha.sqlite3');
-     //mysql
-     //new PDO("mysql:dbname=$dbname;host=$servername",$username,$password);
-     // Set errormode to exceptions
-     $db->setAttribute(PDO::ATTR_ERRMODE,
-         PDO::ERRMODE_EXCEPTION);
+    $settings = getSettings();
+    $options = array(
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+    ); 
+    $dsn = 'mysql:host='.$settings['db_host'].';dbname='.$settings['db_database'];
+    $db = new PDO($dsn, $settings['db_user'], $settings['db_password'], $options);
+    //mysql
+    // Set errormode to exceptions
+    $db->setAttribute(PDO::ATTR_ERRMODE,
+        PDO::ERRMODE_EXCEPTION);
 
     return $db;
 }

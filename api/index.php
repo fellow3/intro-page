@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 $app = new \Slim\Slim(array(
     'templates.path' => 'templates',
     'mode' => 'development',
-    'debug' => true,
+    'debug' => false,
 ));
 
 // Create monolog logger and store logger in container as singleton 
@@ -35,6 +35,18 @@ $app->get('/', function () use ($app) {
     $app->render('index.html');
 });
  */
+function getSettings() {
+  date_default_timezone_set('UTC');
+ 
+  global $settings;
+  $settings_json = file_get_contents(dirname(__FILENAME__)."/private/config.json");
+  if ( !$settings_json ) {
+      die();
+  }
+  $settings = json_decode($settings_json, true);
+  return $settings;
+}
+
 
 require_once 'libs/JSONApiView.php';
 $app->view(new \JSONApiView());
@@ -60,11 +72,8 @@ $app->hook('slim.before.router', function () use($app)
     }
 });
 
-$app->get('/hello/:name', function($name) use ($app) {
-    echo "hello $name";
-});
-$app->get('/hello', function() use ($app) {
-    echo "hello sexy";
+$app->get('/', function() use ($app) {
+    echo "hello there";
 });
 // Run app
 $app->run();
